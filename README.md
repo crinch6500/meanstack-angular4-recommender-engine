@@ -50,8 +50,6 @@ A window will automatically open at [localhost:4200](http://localhost:4200). Ang
 16. `heroku open`
 17. A window will open with your app online
 
-## Preview
-![Preview](https://raw.githubusercontent.com/DavideViolante/Angular2-Full-Stack/master/demo.gif "Preview")
 
 ## Please open an issue if
 * you have any suggestion to improve this project
@@ -75,6 +73,3 @@ Run `ng lint` (frontend) and `npm run lintbe` (backend) to execute the linter vi
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 To get more help about this project, [visit the wiki](https://github.com/DavideViolante/Angular-Full-Stack/wiki).
-
-### Author
-* [Davide Violante](https://github.com/DavideViolante)
