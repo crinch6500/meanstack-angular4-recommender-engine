@@ -1,0 +1,122 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+	
+<div class="page-content">
+	<div class="container-fluid">
+		<section class="card">
+			<header class="card-header card-header-lg">
+									<a href=""><button type="button" class="btn btn-inline btn-primary-outline">Back to Movies Listing</button></a>
+									<br/>
+
+				{{ movie.name }} (Cat Name)
+
+			</header>
+			
+			<!--<div class="card-block invoice">
+				<div class="row">
+					<div class="col-lg-6 company-info">
+						<div class="invoice-block">
+														<img src="{{ asset('img/movies/'.$movie->poster_path) }}" />
+						</div>
+
+						<div class="invoice-block">
+							<div>Genre(s):<br/> @foreach($genres as $genre) {{ $genre->genre_name . "," }} @endforeach</div>
+						</div>
+												
+						<div class="invoice-block">
+							<div>Overview:<br/> {{ $movie->description }}</div>
+						</div>
+					</div>
+					<div class="col-lg-6 clearfix invoice-info">
+						<div class="text-lg-right">
+							<h5>Release Date : {{ $movie->year }}</h5>
+															<div id="divRatedMsg">
+																@if(!$movie->already_rated)
+																	<h5>Rate this Movie ( 1 to 5 ) </h5>
+																	<div>
+																		 <span class="fa fa-2x fa-star-o star1" id="q6-1" title="Rate 5" value="1" onclick="javascript:submitUserRating({{ $movie->id }},5);"></span>
+																		 <span class="fa fa-2x fa-star-o star1" id="q6-2" title="Rate 4" value="2" onclick="javascript:submitUserRating({{ $movie->id }},4);"></span>
+																		 <span class="fa fa-2x fa-star-o star1" id="q6-3" title="Rate 3" value="3" onclick="javascript:submitUserRating({{ $movie->id }},3);"></span>
+																		 <span class="fa fa-2x fa-star-o star1" id="q6-4" title="Rate 2" value="4" onclick="javascript:submitUserRating({{ $movie->id }},2);"></span>
+																		 <span class="fa fa-2x fa-star-o star1" id="q6-5" title="Rate 1" value="5" onclick="javascript:submitUserRating({{ $movie->id }},1);"></span>
+																	</div>
+																@else
+																		<h5>You have already rated this movie with {{ $movie->rating_given }} starts.</h5>
+																		
+																	<div>
+																		@for($i=1;$i<=$movie->rating_given;$i++)
+																			 <span class="fa fa-2x fa-star star2"></span>
+																		@endfor
+																	</div>                                                                            
+																@endif
+															</div>
+						</div>
+													<br/><br/>
+						<div class="text-lg-left">
+														
+
+														@if(isset($moviesWithJaccard) && !empty($moviesWithJaccard))
+															<h5>Users who liked this also liked these:</h5>
+															@foreach($moviesWithJaccard as $movieWithJaccard)
+																@if(!empty($movieWithJaccard->poster_path))
+																	@if(File::exists('img/movies/'.$movieWithJaccard->poster_path))
+																		<a href="{{ url('movie/'.$movieWithJaccard->id) }}" style="margin: 5px;"><img src="{{ asset('img/movies/'.$movieWithJaccard->poster_path) }}" style="width: 85px;" /></a>
+																	@else
+																		<a href="{{ url('movie/'.$movieWithJaccard->id) }}" style="margin: 5px;"><img src="{{ asset('img/movies/placeholder_movie.png') }}" style="width: 85px; height: 150px;" /></a>
+																	@endif
+																@else
+																	<a href="{{ url('movie/'.$movieWithJaccard->id) }}" style="margin: 5px;"><img src="{{ asset('img/movies/placeholder_movie.png') }}" style="width: 85px; height: 150px;" /></a>
+																@endif
+															@endforeach
+														@endif
+													</div>
+													<br/>
+
+												
+						<div class="text-lg-left">
+														
+														<h5>You might also like these movies from same category:</h5>
+
+														@if(isset($moviesWithSameGenre) && !empty($moviesWithSameGenre))
+															@foreach($moviesWithSameGenre as $movieWithGenre)
+																@if(!empty($movieWithGenre->poster_path))
+																	@if(File::exists('img/movies/'.$movieWithGenre->poster_path))
+																		<a href="{{ url('movie/'.$movieWithGenre->id) }}" style="margin: 5px;"><img src="{{ asset('img/movies/'.$movieWithGenre->poster_path) }}" style="width: 85px;" /></a>
+																	@else
+																		<a href="{{ url('movie/'.$movieWithGenre->id) }}" style="margin: 5px;"><img src="{{ asset('img/movies/placeholder_movie.png') }}" style="width: 85px; height: 150px;" /></a>
+																	@endif
+																@else
+																	<a href="{{ url('movie/'.$movieWithGenre->id) }}" style="margin: 5px;"><img src="{{ asset('img/movies/placeholder_movie.png') }}" style="width: 85px; height: 150px;" /></a>
+																@endif
+															@endforeach
+														@endif
+													</div>
+													<br/>
+						<div class="text-lg-left">
+														
+														<h5>Popular Movies:</h5>
+
+														@if(isset($popularMovies) && !empty($popularMovies))
+															@foreach($popularMovies as $popularMovie)
+																@if(!empty($popularMovie->poster_path))
+																	@if(File::exists('img/movies/'.$popularMovie->poster_path))
+																		<a href="{{ url('movie/'.$popularMovie->id) }}" style="margin: 5px;"><img src="{{ asset('img/movies/'.$popularMovie->poster_path) }}" style="width: 85px;" /></a>
+																	@else
+																		<a href="{{ url('movie/'.$popularMovie->id) }}" style="margin: 5px;"><img src="{{ asset('img/movies/placeholder_movie.png') }}" style="width: 100px; height: 150px;" /></a>
+																	@endif
+																@else
+																	<a href="{{ url('movie/'.$popularMovie->id) }}" style="margin: 5px;"><img src="{{ asset('img/movies/placeholder_movie.png') }}" style="width: 100px; height: 150px;" /></a>
+																@endif
+															@endforeach
+														@endif
+													</div>
+												
+												
+													
+					</div>
+				</div>
+			</div>-->
+		</section>
+	</div><!--.container-fluid-->
+</div><!--.page-content-->

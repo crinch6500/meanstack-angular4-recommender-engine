@@ -1,0 +1,57 @@
+<app-loading [condition]="isLoading"></app-loading>
+
+<app-toast [message]="toast.message"></app-toast>
+
+<!-- SEARCH -->
+<div class="card">
+  <h4 class="card-header">Search Movie</h4>
+	<div class="card-block">
+		<div class="form-group">
+			<input class="form-control" ng-model="searchkey" type="text" (keyup)="movieSearch($event.target.value)"/>
+		</div>		
+	</div>
+</div>
+<!-- END -->
+
+<div class="card" *ngIf="!isLoading">
+  <h4 class="card-header">Current movies ({{total}})</h4>
+  <div class="card-block">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-default">
+        <tr>
+		  <th>&nbsp;</th>			
+          <th>Title</th>          
+          <th>Release Date</th>          
+        </tr>
+      </thead>
+      <tbody *ngIf="movies.length === 0">
+        <tr>
+          <td colspan="4">There are no movies in the DB.</td>
+        </tr>  
+      </tbody>
+      <tbody *ngIf="!isEditing">
+        <tr *ngFor="let movie of movies">		
+		  <td><a href="/movie/{{movie._id}}"><img src="assets/movies/{{movie.poster_path}}" alt="{{movie.poster_path}}" height="50"></a></td>	
+          <td><a href="/movie/{{movie._id}}">{{movie.title}}</a></td>          
+          <td>{{movie.year}}</td>
+          <!--
+          <td>
+            <button class="btn btn-sm btn-warning" (click)="enableEditing(movie)"><i class="fa fa-pencil"></i> Edit</button> <button class="btn btn-sm btn-danger" (click)="deleteMovie(movie)"><i class="fa fa-trash"></i> Delete</button>
+          </td>
+          -->
+        </tr>  
+      </tbody>
+    </table>
+  </div>
+  
+<my-pagination
+  (goPage)="goToPage($event)"
+  (goNext)="onNext()"
+  (goPrev)="onPrev()"
+  [pagesToShow]="10"
+  [page]="page"
+  [perPage]="limit"
+  [searchkey]="searchkey"
+[count]="total"></my-pagination>  
+  
+</div>

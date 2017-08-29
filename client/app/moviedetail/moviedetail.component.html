@@ -1,0 +1,62 @@
+<app-loading [condition]="isLoading"></app-loading>
+<app-toast [message]="toast.message"></app-toast>
+<div class="page-content">
+	<div class="container-fluid">
+		<section class="card">
+			<header class="card-header card-header-lg">
+									<a href="/movies"><button type="button" class="btn btn-inline btn-primary-outline">Back to Movies Listing</button></a>
+									<br/>
+
+				{{ movie.title }} (Movie Name) ({{movie.popularity}})
+
+			</header>
+			
+			<div class="card-block invoice">
+				<div class="row">
+					<div class="col-lg-6 company-info">
+						<div class="invoice-block">
+														<img src="assets/movies/{{movie.poster_path}}" />
+						</div>
+
+							<div class="invoice-block">
+								<div>Genre(s):<br/> ({{movie.genre_ids}})</div>
+							</div>
+																			
+						<div class="invoice-block">
+							<div>Overview:<br/> {{ movie.description }}</div>
+						</div>
+					</div>
+					<div class="col-lg-6 clearfix invoice-info">
+						<div class="text-lg-right">
+							<h5>Release Date : {{ movie.year }}</h5>
+															<div id="divRatedMsg">
+																<app-rating></app-rating>
+															</div>
+						</div>
+													<br/><br/>
+						<div class="text-lg-left">JACCARD INDEXING.........
+													</div>
+													<br/>
+
+												
+						<div class="text-lg-left">
+							<h5>You might also like these movies from same category:</h5>
+							<a *ngFor="let genremovie of moviesWithSameGenres" style="margin: 5px;" href="/movie/{{genremovie._id}}">
+								<img src="assets/movies/{{genremovie.poster_path}}" alt="{{genremovie.poster_path}}" style="width: 85px;">
+							</a>
+							{{moviesWithSameGenres.length}}
+						</div>
+						<br/>
+						<!-- POPULAR MOVIES -->							
+						<div class="text-lg-left">
+							<app-popular-movies></app-popular-movies>							
+						</div>
+												
+												
+													
+					</div>
+				</div>
+			</div>
+		</section>
+	</div><!--.container-fluid-->
+</div><!--.page-content-->

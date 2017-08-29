@@ -1,0 +1,4 @@
+"use strict";
+
+import fs = require('fs');
+

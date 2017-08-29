@@ -1,0 +1,17 @@
+.rating{
+	float:left;
+}
+.star1{
+    float:right;
+    cursor: pointer;
+}
+.star1:hover, .star1:hover ~ .star1{
+    color:gold;    
+}
+.star2{
+    color:gold;
+}
+
+.bgColor{
+  background-color:#5fba7d;
+}

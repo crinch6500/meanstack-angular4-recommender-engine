@@ -1,0 +1,47 @@
+Asif:
+5964da0bcbabf42793e20bb0
+
+Usman:
+5964dad2cbabf42793e20bb2
+
+Omer:
+59942785570a2030b0fdc403
+
+----------
+
+
+"movie" : "5968ca0726eac3841a8b4567 (Thor: Ragnarok)", "user" : "5964da0bcbabf42793e20bb0 (Asif)", "rating" : 5
+
+"movie" : "5968ca0726eac3841a8b4590 (The Dark Knight)", "user" : "5964dad2cbabf42793e20bb2 (Usman)", "rating" : 4
+
+"movie" : "5968ca0726eac3841a8b45da (Spider-Man)", "user" : "59942785570a2030b0fdc403 (Omer)", "rating" : 4
+
+"movie" : "5968ca0726eac3841a8b45d3 (The Lord of the Rings)", "user" : "59942785570a2030b0fdc403 (Omer)", "rating" : 2
+
+"movie" : "5968ca0726eac3841a8b4568 (Spider-Man: Homecoming)", "user" : "5964da0bcbabf42793e20bb0 (Asif)", "rating" : 5
+
+"movie" : "5968ca0726eac3841a8b4567 (Thor: Ragnarok)", "user" : "5964dad2cbabf42793e20bb2 (Usman)", "rating" : 5
+
+"movie" : "5968ca0726eac3841a8b4568 (Spider-Man: Homecoming)", "user" : "5964dad2cbabf42793e20bb2 (Usman)", "rating" : 5
+
+--------------
+
+MOVIES RATED BY OMER:
+- 5968ca0726eac3841a8b45d3 (The Lord of the Rings)
+- 5968ca0726eac3841a8b45da (Spider-Man)
+
+
+MOVIES RATED BY Asif:
+- 5968ca0726eac3841a8b4567 (Thor: Ragnarok)   []
+- 5968ca0726eac3841a8b4568 (Spider-Man: Homecoming)   []
+
+
+MOVIES RATED BY Usman:
+- 5968ca0726eac3841a8b4568 (Spider-Man: Homecoming)   []
+- 5968ca0726eac3841a8b4567 (Thor: Ragnarok)   []
+- 5968ca0726eac3841a8b4590 (The Dark Knight)   []
+
+
+
+
+

@@ -1,0 +1,14 @@
+<div id="divRatedMsg">
+	<h5 *ngIf="!rating.rating">Rate this Movie ( 1 to 5 ) </h5>	
+	<div *ngIf="!rating.rating">
+		<span class="fa fa-2x fa-star-o star1" id="q6-1" title="Rate 5" value="1" (click)="submitUserRating(5);"></span>
+		<span class="fa fa-2x fa-star-o star1" id="q6-2" title="Rate 4" value="2" (click)="submitUserRating(4)"></span>
+		<span class="fa fa-2x fa-star-o star1" id="q6-3" title="Rate 3" value="3" (click)="submitUserRating(3)"></span>
+		<span class="fa fa-2x fa-star-o star1" id="q6-4" title="Rate 2" value="4" (click)="submitUserRating(2)"></span>
+		<span class="fa fa-2x fa-star-o star1" id="q6-5" title="Rate 1" value="5" (click)="submitUserRating(1)"></span>
+	</div>		
+	<h5 ngClass="bgColor" *ngIf="rating.rating">You have already rated this movie with {{ rating.rating }} starts.</h5>
+	<div ngClass="bgColor" *ngIf="rating.rating">
+        <span *ngFor="let rating of rating_star_counter(rating.rating); let i = index" class="fa fa-2x fa-star star2"></span>
+	</div>
+</div>

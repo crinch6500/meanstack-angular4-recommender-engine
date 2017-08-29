@@ -1,0 +1,13 @@
+<!--
+<app-loading [condition]="isLoading"></app-loading>
+-->
+<!--
+<div class="text-lg-left">
+	<h5>Popular Movies:</h5>
+	<a *ngFor="let movie of popularmovies" style="margin: 5px;" href="/movie/{{movie._id}}"><img src="assets/movies/{{movie.poster_path}}" alt="{{movie.poster_path}}" height="50" style="width: 85px;"></a>
+</div>
+-->
+<h5>Popular Movies:</h5>
+<a *ngFor="let movie of popularmovies" style="margin: 5px;" href="/movie/{{movie._id}}"><img src="assets/movies/{{movie.poster_path}}" alt="{{movie.poster_path}}" style="width: 85px;"></a>
+
+

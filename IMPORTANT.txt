@@ -1,0 +1,35 @@
+https://github.com/DavideViolante/Angular-Full-Stack
+
+
+
+Prerequisites
+
+    Install Node.js and MongoDB
+    Install Angular CLI: npm i -g @angular/cli
+    From project root folder install all the dependencies: npm i
+
+Run
+Development mode
+
+npm run dev: concurrently execute MongoDB, Angular build, TypeScript compiler and Express server.
+
+A window will automatically open at localhost:4200. Angular and Express files are being watched. Any change automatically creates a new bundle, restart Express server and reload your browser.
+Production mode
+
+npm run prod: run the project with a production bundle and AOT compilation listening at localhost:3000
+
+
+
+PAGINATION:
+URL pagination has been applied like cats/1, cats/2, ...., you can set record limit per page in cats.ts
+
+
+
+=================
+
+PROBLEMS:
+1 - GET A NEW BOOTSTRAP MOVIE THEME
+2 - APPLY CSS ON PAGINATION
+3 - GET POPULAR MOVIES, ISSUE WITH DECIMAL NUMBER WHEN TRYING TO GET MAX DECIMAL VALUE FROM MOVIES POPULARITY.
+4 - ADD DYNAMIC DROPDOWN LIST FOR RECORDS PER PAGE ON MOVIE LISTING.
+4 - JACCARD FUNCTION WHAT IF 'MYMOVIES' ARRAY IS EMPTY, THEN ?
