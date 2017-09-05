@@ -51,7 +51,7 @@ export class MovieDetailComponent {
 		  //this.myRatedMovies();
 		  //this.usersWhoRatedMovies();
 		  //this.jaccardMovies();
-		  this.jaccardMoviesToDisplay();
+		  this.jaccardMoviesToDisplay(movieId);
 		  this.isLoading = false;
 	  });	  
   }
@@ -91,10 +91,11 @@ export class MovieDetailComponent {
   }
   
   
-  jaccardMoviesToDisplay()
+  jaccardMoviesToDisplay(movieId)
   {
 	var parameters = {};  
 	parameters['user'] = this.auth.currentUser._id;
+	parameters['movie'] = movieId;
 	this.userMovieRatingService.jaccardMovies(parameters).subscribe(res => {		  
 		console.log(res);		
 		console.log('WORKIGN ON IT........TODAY');		

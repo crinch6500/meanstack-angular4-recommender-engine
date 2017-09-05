@@ -58,7 +58,7 @@ export default function setRoutes(app) {
   router.route('/userswhoratedmovies').get(ratingCtrl.getUsersWhoRatedMovies);  //client, movie detail components, function : jaccardMovies
   router.route('/jaccardmovies/:movieArr/:userId').get(ratingCtrl.getJaccardMovies);  //client, movie detail components, function : jaccardMovies
   
-  router.route('/jaccardmoviesnew/:user').get(ratingCtrl.getJaccardMoviesNew);
+  router.route('/jaccardmoviesnew/:user/:movie').get(ratingCtrl.getJaccardMoviesNew);
   
   
   

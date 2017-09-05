@@ -28,7 +28,7 @@ export class UserMovieRating {
 
   jaccardMovies(obj): Observable<any> {
 	console.log('SERVICE RATING CLASS GETMOVIERATING FUNC USER.......'+obj.user);	
-    return this.http.get(`/api/jaccardmoviesnew/${obj.user}`).map(res => res.json());
+    return this.http.get(`/api/jaccardmoviesnew/${obj.user}/${obj.movie}`).map(res => res.json());
   }
 
 
