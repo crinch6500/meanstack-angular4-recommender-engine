@@ -53,39 +53,6 @@ export class RatingsComponent implements OnInit  {
 		parameters['movie'] = this.movie_id;
 		parameters['rating'] = rateVal;
  		
- 		
- 		/*
-		this.userMovieRatingService.addMovieRating(parameters).subscribe(
-		  res => {        
-			this.toast.setMessage('Rating added successfully.', 'success');
-		  },
-		  error => console.log(error)
-		);
-		
-		
-		this.popularMovieService.updatePopularity(parameters).subscribe(
-		  res => {        
-			this.toast.setMessage('Popularity added successfully.', 'success');
-		  },
-		  error => console.log(error)
-		);
-		*/
-		/*
-		this.userMovieRatingService.addMovieRating(parameters).subscribe(
-		  res => {        
-			this.toast.setMessage('Rating added successfully.', 'success');
-		  },
-		  error => console.log(error)
-		);
-		
-		this.popularMovieService.updatePopularity(parameters).subscribe(
-		  res => {        
-			this.toast.setMessage('Popularity added successfully.', 'success');
-		  },
-		  error => console.log(error)
-		);
-		*/
-		
 		this.userMovieRatingService.addMovieRating(parameters).subscribe(
 		  res => {        
 			//this.toast.setMessage('Rating added successfully.', 'success');
@@ -93,6 +60,7 @@ export class RatingsComponent implements OnInit  {
 				this.popularMovieService.updatePopularity(parameters).subscribe(
 						  res => {        
 							this.toast.setMessage('Rating and Popularity added successfully.', 'success');
+							this.getUserMovieRating(); //added on 6sep17
 						  },
 						  error => console.log(error)
 						);			
@@ -103,7 +71,7 @@ export class RatingsComponent implements OnInit  {
 		
 		
 		
-		this.getUserMovieRating();				
+		//this.getUserMovieRating();				
 	}
 	
 	getUserMovieRating()

@@ -19,7 +19,7 @@ export class MovieDetailComponent {
 
   movie = {};
   moviesWithSameGenres = [];  
-  //moviesWithJaccard = [];
+  moviesWithJaccard = [];
   myMovies = [];
   usersRatedMovies = [];  
   private sub: any; //TO GET PRAMETER FROM URL
@@ -99,7 +99,8 @@ export class MovieDetailComponent {
 	this.userMovieRatingService.jaccardMovies(parameters).subscribe(res => {		  
 		console.log(res);		
 		console.log('WORKIGN ON IT........TODAY');		
-	});	  		
+		this.moviesWithJaccard = res.jaccard_Movies;
+	});		
   }
   
   

@@ -16,6 +16,8 @@ var mongoose = Promise.promisifyAll(mongoose);  //CRINCH - THIS LINE ADDED TO PR
 import * as fs from 'fs';  //CRINCH ADDED AFTER TO WRITE/READ FILE
 import * as PythonShell from 'python-shell';  //CRINCH TO EXECUTE PYTHON SCRIPT
 
+import * as ldap from 'ldapjs';
+
 
 export default class RatingCtrl extends BaseCtrl {
   model = Rating;
@@ -140,9 +142,9 @@ export default class RatingCtrl extends BaseCtrl {
 						for (var i = 0; i < docs.length; i++) {
 						  csvContent2+=docs[i]._id + ",";
 						}
-						csvContent2 = csvContent2.slice(',',-1)+"\n";						
-						//csvContent2 = csvContent2.slice(",",-1);						
-						//csvContent2 += "\n";						
+						//csvContent2 = csvContent2.slice(',',-1)+"\n";						
+						csvContent2 = csvContent2.slice(0,-1)+"\n"; //changed on 6sep17
+						
 					}
 				//http://www.redotheweb.com/2012/06/17/nodejs-for-php-programmers-4-streams.html
 				//https://stackoverflow.com/questions/30689526/how-to-call-python-script-from-nodejs?rq=1
@@ -206,7 +208,7 @@ export default class RatingCtrl extends BaseCtrl {
 					var movies_exmp = result[0];	
 					
 					//
-					var exemtedMovies = [];
+					var exemtedMovies:any = [];
 					for (let movie of movies_exmp) {
 						exemtedMovies.push(movie.movie);						
 					}			
@@ -349,7 +351,8 @@ export default class RatingCtrl extends BaseCtrl {
 								csvContent2+=internal_arr[j]._id + ",";
 							}
 							if(csvContent2)		
-							csvContent2 = csvContent2.slice(',',-1)+"\n";														
+							//csvContent2 = csvContent2.slice(',',-1)+"\n";														
+							csvContent2 = csvContent2.slice(0,-1)+"\n";
 						}
 						if(csvContent2){
 							//fs.appendFile('movies.csv', csvContent2);													
@@ -414,14 +417,23 @@ export default class RatingCtrl extends BaseCtrl {
 	
 		var search = {};				
 		search['user'] = req.params.user;					
+		var empty_jaccard_movies = [];
 
 		  Rating_model_movies.find(search, { movie: 1, _id : 0 }, null).exec()		  
 			.then(function(movies){
-				  return [movies];
+			
+				if(movies.length ===0)	
+				  return res.json({"jaccard_Movies": empty_jaccard_movies});
+					
+				return [movies];
 			})
 			.then(function(result){
 				return Rating_model_users.aggregate({ $group : { _id : "$user" } }).exec()
 					.then(function(users){
+					
+						if(users.length === 0)	
+						  return res.json({"jaccard_Movies": empty_jaccard_movies});
+						  
 						result.push(users);
 						return result;
 					})
@@ -430,8 +442,7 @@ export default class RatingCtrl extends BaseCtrl {
 				var movies_to_write = [];
 				var process_users = result[1];
 				var exemptd_movies = result[0];
-				process_users.forEach(function(u) {
-				
+				process_users.forEach(function(u) {				
 					var exemtedMovies = [];
 					for (let movie of exemptd_movies) {
 						exemtedMovies.push(movie.movie);						
@@ -447,6 +458,10 @@ export default class RatingCtrl extends BaseCtrl {
 			.then(function(result){
 				var compared_movie_arr = [];		
 				compared_movie_arr = result;
+				
+					if(compared_movie_arr.length === 0)	
+					  return res.json({"jaccard_Movies": empty_jaccard_movies});
+					  
 				var csvContent2 = '';									
 					if(compared_movie_arr.length > 0){
 						for (var i = 0; i < compared_movie_arr.length; i++) {							
@@ -457,7 +472,8 @@ export default class RatingCtrl extends BaseCtrl {
 								csvContent2+=internal_arr[j]._id + ",";
 							}
 							if(csvContent2)		
-							csvContent2 = csvContent2.slice(',',-1)+"\n";														
+							//csvContent2 = csvContent2.slice(',',-1)+"\n";
+							csvContent2 = csvContent2.slice(0,-1)+"\n";		//changed on 6sep17												
 						}
 					}				
 					
@@ -476,49 +492,34 @@ export default class RatingCtrl extends BaseCtrl {
 
 								console.log('results: %j', similar_movies_ids);
 								console.log('2ndd results:'+similar_movies_ids); //['5968ca0726eac3841a8b4590', '5968ca0726eac3841a8b4568']
-	
-/*	
-var hack = similar_movies_ids[0].replace("[","");
-hack = hack.replace("]","");
-var hack1 = hack.replace("'","");
-var hack2 = hack.replace("'","");
-var hack3 = hack2.replace("\'","");
-var hack4 = hack3.replace("\'","");
-var hack5 = hack4.replace("\'","");
-var hack6 = hack5.replace("\'","");
-var hack7 = hack6.replace(" ","");
-var data:any[] = hack7.split(",");
-*/
-
-var hack = similar_movies_ids[0].replace("[","");
-hack = hack.replace("]","");
-
-
-//hack = hack.replace("'","");
-//hack = hack.replace("'","");
-hack = hack.split("'").join('');
-
-//hack = hack.replace("\'","");
-//hack = hack.replace("\'","");
-//hack = hack.replace("\'","");
-//hack = hack.replace("\'","");
-hack = hack.split('\'').join('');
-
-hack = hack.replace(" ","");
-var data:any[] = hack.split(",");
-
-
-
-
-
-								//Movies_model.find( { _id:{ $in: ['5968ca0726eac3841a8b4590', '5968ca0726eac3841a8b4568'] }}).exec(function(err, similar_movies) {
+								
+/*								
+						if(similar_movies_ids[0] == '[]'){
+							console.log('data empety.......');
+						}else{
+							console.log('data not empety.......');
+						}	
+						return res.json({"jaccard_Movies": empty_jaccard_movies});	
+*/										
+								
+						if(similar_movies_ids[0] == '[]')
+							return res.json({"jaccard_Movies": empty_jaccard_movies});
+								
+								var hack = similar_movies_ids[0].replace("[","");
+								hack = hack.replace("]","");
+								hack = hack.split("'").join('');
+								hack = hack.split('\'').join('');								
+								hack = hack.split(" ").join("");
+								var data:any[] = hack.split(",");
 								Movies_model.find( { _id:{ $in:  data }}).exec(function(err, similar_movies) {
 								console.log('presetn...........');
 									if (err){
+										console.log('ERROR FOUND...........');
 									  console.log(err);  
 									  res.json(err);
 									}  
 									else{
+									console.log('no ERROR FOUND...........');
 									console.log('similar movies empty....................:');		
 									  console.log('similar movies................:'+similar_movies);	
 									  //result.push(similar_movies);	
@@ -533,9 +534,11 @@ var data:any[] = hack.split(",");
 							
 						});														
 						
+					}else{
+						res.json({'jaccard_Movies':empty_jaccard_movies});
 					}				
 								
-				//res.json({'hell':compared_movie_arr});
+				
 			})
 			.then(undefined, function(err){
 			  res.json(err);

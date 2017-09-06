@@ -62,6 +62,8 @@ export class MoviesComponent implements OnInit {
 	  parameters['limit'] = this.limit;
 	  if(this.searchkey){
 		parameters['searchkey'] = this.searchkey;
+	  }else{
+		parameters['searchkey'] = 'empty';
 	  }  
 	  this.movieService.getMovies(parameters).subscribe(res => {
 		  this.total = res.total;

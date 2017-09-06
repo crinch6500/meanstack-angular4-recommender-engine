@@ -34,11 +34,14 @@
 															</div>
 						</div>
 													<br/><br/>
-						<div class="text-lg-left">JACCARD INDEXING.........
-													</div>
-													<br/>
-
-												
+													
+						<div class="text-lg-left" *ngIf="moviesWithJaccard.length > 0">
+							<h5>Users who liked this also liked these:</h5>
+							<a *ngFor="let jackMovie of moviesWithJaccard" style="margin: 5px;" href="/movie/{{jackMovie._id}}">
+								<img src="assets/movies/{{jackMovie.poster_path}}" alt="{{jackMovie.poster_path}}" style="width: 85px;">
+							</a>
+						</div>
+						<br/>
 						<div class="text-lg-left">
 							<h5>You might also like these movies from same category:</h5>
 							<a *ngFor="let genremovie of moviesWithSameGenres" style="margin: 5px;" href="/movie/{{genremovie._id}}">

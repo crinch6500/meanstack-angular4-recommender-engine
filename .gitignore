@@ -5,8 +5,8 @@
 /tmp
 /out-tsc
 
-/client/assets/movies
-/client/assets/movies/img.zip
+#/client/assets/movies
+#/client/assets/movies/img.zip
 
 # dependencies
 /node_modules

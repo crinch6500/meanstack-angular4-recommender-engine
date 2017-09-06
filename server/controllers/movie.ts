@@ -37,7 +37,7 @@ export default class MovieCtrl extends BaseCtrl {
 			var limit:number = +req.params.limit;  // + sign used to make it number, otherwise query return error to be limit must be a number
 		}
 		
-		if(req.params.searchkey && req.params.searchkey!='undefined')
+		if(req.params.searchkey && req.params.searchkey!='empty')
 		{
 			//var searchkey = new RegExp(req.params.searchkey, 'i');							
 			//var search = {};
