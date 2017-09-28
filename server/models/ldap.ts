@@ -13,11 +13,11 @@ export default class LdapModel {
 	base_dn: String;	
 
 	constructor (){
-		this.ldap_server = "ldap://10.28.82.2";
-		this.auth_user = "nxb.movies@nextbridge.org";
-		this.auth_pass = "Do0aiXei";
-		this.ldaptree = "OU=VTEAMS,DC=nextbridge,DC=org";
-		this.base_dn = "DC=nextbridge, DC=org";		
+		this.ldap_server = "xxxxxxxxxxxxx";
+		this.auth_user = "xxxxxxxxxxxxxxxxxxxxx";
+		this.auth_pass = "xxxxxxxxxxxxxxx";
+		this.ldaptree = "xxxxxxxxxxxxxxxxxxx";
+		this.base_dn = "xxxxxxxxxxxxxxxxxxxxxx";		
 	}
 	
 	
