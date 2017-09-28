@@ -22,8 +22,6 @@ export class PopularMoviesService {
 	console.log('SERVICE CLASS POPULARITY UPDATE movie ID.......'+obj.movie);
 	console.log('SERVICE CLASS POPULARITY UPDATE MOVIE rating.......'+obj.rating);
     return this.http.get(`/api/popularity/${obj.movie}/${obj.rating}`).map(res => res.json());    
-    
-    //return this.http.put(`/api/cat/${cat._id}`, JSON.stringify(cat), this.options);
   }
   
   

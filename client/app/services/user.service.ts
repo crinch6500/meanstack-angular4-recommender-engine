@@ -16,8 +16,18 @@ export class UserService {
     return this.http.post('/api/user', JSON.stringify(user), this.options);
   }
 
+  ldapRegister(user): Observable<any> {
+    return this.http.post('/api/ldapuser', JSON.stringify(user), this.options);
+  }
+
   login(credentials): Observable<any> {
     return this.http.post('/api/login', JSON.stringify(credentials), this.options);
+  }
+
+  /****************CRINCH, FOR LDAP AUTHENTICATION*********************/
+  loginldap(credentials): Observable<any> {  
+  console.log('user service user.service.ts.........loginldap funciton')
+    return this.http.post('/api/loginldap', JSON.stringify(credentials), this.options);
   }
 
   getUsers(): Observable<any> {

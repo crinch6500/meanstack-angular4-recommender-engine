@@ -48,7 +48,7 @@ export class RegisterComponent implements OnInit {
     return { 'has-danger': !this.password.pristine && !this.password.valid };
   }
 
-  register() {
+  register() {  
     this.userService.register(this.registerForm.value).subscribe(
       res => {
         this.toast.setMessage('you successfully registered!', 'success');

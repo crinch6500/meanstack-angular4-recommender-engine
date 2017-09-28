@@ -12,13 +12,6 @@ export class CatService {
 
   constructor(private http: Http) { }
 
-/*
-  getCats(): Observable<any> {
-    return this.http.get('/api/cats').map(res => res.json());
-  }
-*/
-
-
   getCats(obj): Observable<any> {
 	console.log('SERVICE CLASS PAGE NUMBER.......'+obj.page);
 	console.log('SERVICE CLASS RECORDS LIMIT.......'+obj.limit);
@@ -29,10 +22,6 @@ export class CatService {
 
 
   getCatsBySearch(obj): Observable<any> {
-	console.log('SERVICE CLASS PAGE NUMBER.......'+obj.page);
-	console.log('SERVICE CLASS RECORDS LIMIT.......'+obj.limit);
-	console.log('SERVICE CLASS RECORDS SEARCHKEY.......'+obj.searchkey);
-	//return this.http.get(`/api/cats/${obj.page}/${obj.limit}`).map(res => res.json());
     return this.http.get(`/api/cats/${obj.page}/${obj.limit}/${obj.searchkey}`).map(res => res.json());
   }
 

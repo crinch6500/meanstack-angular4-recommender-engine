@@ -17,6 +17,7 @@ import { MovieDetailComponent } from './moviedetail/moviedetail.component'; //CR
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { LoginldapComponent } from './loginldap/loginldap.component'; //CRINCH, FOR LDAP LOGIN/AUTHENTICATION
 import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
@@ -37,6 +38,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     AboutComponent,
     RegisterComponent,
     LoginComponent,
+    LoginldapComponent,
     LogoutComponent,
     AccountComponent,
     AdminComponent,

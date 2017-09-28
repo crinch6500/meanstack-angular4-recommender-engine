@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';  //TO GET LOGGED IN USER INFO
 import { UserMovieRating } from '../services/user-movie-rating.service'; //CRINCH
-//import { UserMovieRating } from '../services/user-movie-rating.service'; //CRINCH
 import { PopularMoviesService } from '../services/popular-movies.service'; //CRINCH
 
 
@@ -54,30 +53,21 @@ export class RatingsComponent implements OnInit  {
 		parameters['rating'] = rateVal;
  		
 		this.userMovieRatingService.addMovieRating(parameters).subscribe(
-		  res => {        
-			//this.toast.setMessage('Rating added successfully.', 'success');
-			//
+		  res => {        			
 				this.popularMovieService.updatePopularity(parameters).subscribe(
-						  res => {        
-							this.toast.setMessage('Rating and Popularity added successfully.', 'success');
-							this.getUserMovieRating(); //added on 6sep17
-						  },
-						  error => console.log(error)
-						);			
-			//
+				  res => {        
+					this.toast.setMessage('Rating and Popularity added successfully.', 'success');
+					this.getUserMovieRating(); //added on 6sep17
+				  },
+				  error => console.log(error)
+				);			
 		  },
 		  error => console.log(error)
 		);
-		
-		
-		
-		//this.getUserMovieRating();				
 	}
 	
 	getUserMovieRating()
 	{
-		console.log('THE CURRENT MOVIE ID ON LOAD .............:'+this.movie_id);
-		console.log('THE CURRENT USER ON LOAD.............:'+this.auth.currentUser._id);	
 		var parameters = {};
 		parameters['user'] = this.auth.currentUser._id;
 		parameters['movie'] = this.movie_id;				

@@ -18,8 +18,6 @@ export class PopularMoviesComponent implements OnInit {
   isLoading = true;
   private exemptMovieId: any;
   private sub: any;
-  
-
 
   constructor(private popularmovieService: PopularMoviesService,              
               private http: Http,
@@ -39,9 +37,7 @@ export class PopularMoviesComponent implements OnInit {
     this.getPopularMovies();
   }
 
-  getPopularMovies() {
-  
-	  console.log('client controller popular movies func.......'+this.exemptMovieId);    
+  getPopularMovies() {  
 	  var parameters = {};
 	  parameters['exemptMovieId'] = this.exemptMovieId;
 	  this.popularmovieService.getPopularMovies(parameters).subscribe(res => {		  

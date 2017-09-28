@@ -1,0 +1,19 @@
+<app-toast [message]="toast.message"></app-toast>
+
+<div class="card">
+  <h4 class="card-header">Login LDAP</h4>
+  <div class="card-block">
+    <form [formGroup]="loginldapForm" (ngSubmit)="loginldap()">
+      <div class="input-group" [ngClass]="setClassUsername()">
+        <span class="input-group-addon"><i class="fa fa-user"></i></span>
+        <input class="form-control" type="text" name="username" formControlName="username" placeholder="Username" autofocus>
+      </div>      
+      
+      <div class="input-group" [ngClass]="setClassPassword()">
+        <span class="input-group-addon"><i class="fa fa-key"></i></span>
+        <input class="form-control" type="password" name="password" formControlName="password" placeholder="Password">
+      </div>
+      <button class="btn btn-primary" type="submit" [disabled]="!loginldapForm.valid"><i class="fa fa-sign-in"></i> Login LDAP</button>
+    </form>
+  </div>
+</div>

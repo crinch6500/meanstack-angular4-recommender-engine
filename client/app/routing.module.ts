@@ -8,6 +8,7 @@ import { MovieDetailComponent } from './moviedetail/moviedetail.component';  //C
 import { AboutComponent } from './about/about.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
+import { LoginldapComponent } from './loginldap/loginldap.component';  //CRINCH, FOR LDAP LOGIN/AUTHENTICATION
 import { LogoutComponent } from './logout/logout.component';
 import { AccountComponent } from './account/account.component';
 import { AdminComponent } from './admin/admin.component';
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'movie/:id', component: MovieDetailComponent, canActivate: [AuthGuardLogin] }, //ONLY FOR AUTHENTICATED USERS
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'loginldap', component: LoginldapComponent },  //CRINCH, FOR LDAP LOGIN/AUTHENTICATION
   { path: 'logout', component: LogoutComponent },
   { path: 'account', component: AccountComponent, canActivate: [AuthGuardLogin] },
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuardAdmin] },

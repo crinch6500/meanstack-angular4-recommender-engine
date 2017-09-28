@@ -24,32 +24,10 @@ export class MoviesComponent implements OnInit {
 	searchkey = '';
   
 
-/*
-  addCatForm: FormGroup;
-  name = new FormControl('', Validators.required);
-  age = new FormControl('', Validators.required);
-  weight = new FormControl('', Validators.required);
-
-  constructor(private catService: CatService,
-              private formBuilder: FormBuilder,
-              private http: Http,
-              public toast: ToastComponent) { }
-*/
-
   constructor(private movieService: MovieService,              
               private http: Http,
               public toast: ToastComponent) { }
 
-/*
-  ngOnInit() {
-    this.getCats();
-    this.addCatForm = this.formBuilder.group({
-      name: this.name,
-      age: this.age,
-      weight: this.weight
-    });
-  }
-*/
   ngOnInit() {
     this.getMovies();
   }
@@ -70,13 +48,6 @@ export class MoviesComponent implements OnInit {
 		  this.movies = res.movies;
 		  this.isLoading = false;
 	  });
-/*  
-    this.movieService.getMovies().subscribe(
-      data => this.movies = data,
-      error => console.log(error),
-      () => this.isLoading = false
-    );
-*/    
   }
   
 /*****************START PAGINATION*******************/

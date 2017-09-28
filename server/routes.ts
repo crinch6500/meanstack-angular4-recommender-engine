@@ -21,14 +21,10 @@ export default function setRoutes(app) {
   const popularmovieCtrl = new PopularMovieCtrl();
   
 
-  // Cats
-  //router.route('/cats').get(catCtrl.getAll);
+  // Cats  
   router.route('/cats').get(catCtrl.getPaginated);
   
-  /*router.route('/cats/:page').get(catCtrl.getPaginated);*/
-  /*router.route('/cats/:page/:limit').get(catCtrl.getPaginated);*/
-  router.route('/cats/:page/:limit/:searchkey').get(catCtrl.getPaginated);
-  
+  router.route('/cats/:page/:limit/:searchkey').get(catCtrl.getPaginated);  
   router.route('/cats/count').get(catCtrl.count);
   router.route('/cat').post(catCtrl.insert);
   router.route('/cat/:id').get(catCtrl.get);
@@ -36,13 +32,11 @@ export default function setRoutes(app) {
   router.route('/cat/:id').delete(catCtrl.delete);
 
   // Movies
-  router.route('/movies').get(movieCtrl.getAll);
-  //router.route('/movies').get(movieCtrl.getPaginated);  //CRINCH
+  router.route('/movies').get(movieCtrl.getAll);  
   router.route('/movie/:id').get(movieCtrl.getDetail);    //CRINCH
   router.route('/movies/count').get(movieCtrl.count);      
   router.route('/movies/:page/:limit/:searchkey').get(movieCtrl.getPaginated);
-  router.route('/movieswithgenerid/:id/:mid').get(movieCtrl.moviesWithGenreId);
-  //router.route('/movieswithjaccard/:id').get(movieCtrl.moviesWithJaccard);
+  router.route('/movieswithgenerid/:id/:mid').get(movieCtrl.moviesWithGenreId);  
   
   
   // POPULAR MOVIES
@@ -52,22 +46,20 @@ export default function setRoutes(app) {
   
   //RATINGS
   router.route('/ratings/:user/:movie/:rating').get(ratingCtrl.insert);
-  router.route('/rating/:user/:movie').get(ratingCtrl.getRating);
-  
+  router.route('/rating/:user/:movie').get(ratingCtrl.getRating);  
   router.route('/myratedmovies/:user').get(ratingCtrl.getMyRatedMovies);  //client, movie detail components, function : jaccardMovies
   router.route('/userswhoratedmovies').get(ratingCtrl.getUsersWhoRatedMovies);  //client, movie detail components, function : jaccardMovies
-  router.route('/jaccardmovies/:movieArr/:userId').get(ratingCtrl.getJaccardMovies);  //client, movie detail components, function : jaccardMovies
-  
+  router.route('/jaccardmovies/:movieArr/:userId').get(ratingCtrl.getJaccardMovies);  //client, movie detail components, function : jaccardMovies  
   router.route('/jaccardmoviesnew/:user/:movie').get(ratingCtrl.getJaccardMoviesNew);
   
-  
-  
-
+    
   // Users
   router.route('/login').post(userCtrl.login);
+  router.route('/loginldap').post(userCtrl.loginldap); //CRINCH, FOR LDAP LOGIN/AUTHENTICATION
   router.route('/users').get(userCtrl.getAll);
   router.route('/users/count').get(userCtrl.count);
   router.route('/user').post(userCtrl.insert);
+  router.route('/ldapuser').post(userCtrl.insertLdapUser);
   router.route('/user/:id').get(userCtrl.get);
   router.route('/user/:id').put(userCtrl.update);
   router.route('/user/:id').delete(userCtrl.delete);
